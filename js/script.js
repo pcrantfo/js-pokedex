@@ -1,2 +1,4 @@
-let myName = 'Peyton';
-document.write(myName);
+alert('Hello World');
+
+let favFood = 'Impossible to answer';
+document.write(favFood);
