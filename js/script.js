@@ -81,7 +81,7 @@ function generateTable(table, data) {
         for (let key in element) {
             let cell = row.insertCell();
             if (element[key].length > 1 && typeof element[key] == 'object') { 
-                let multiEntryArray = ' ';
+                let multiEntryArray = '';
                 for (let i of element[key]) {
                     if (i == element[key][element[key].length-1]) {
                         multiEntryArray += `${i}`;
