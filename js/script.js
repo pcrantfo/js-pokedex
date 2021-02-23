@@ -37,7 +37,7 @@ let pokemonList = [
     },
     {
         nationalIndex: 7,
-        name: 'suqirtle',
+        name: 'squirtle',
         height: 0.5,
         types: ['water']
     },
