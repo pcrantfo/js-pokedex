@@ -64,6 +64,9 @@ let pokemonList = [
 //      };
 //  };
 
+let table = document.querySelector("table");
+let data = Object.keys(pokemonList[0]);
+
 function generateTableHead(table, data) {
     let thead = table.createTHead();
     let row = thead.insertRow();
@@ -99,7 +102,5 @@ function generateTable(table, data) {
     }
 }
 
-let table = document.querySelector("table");
-let data = Object.keys(pokemonList[0]);
 generateTable(table, pokemonList);
 generateTableHead(table, data);
