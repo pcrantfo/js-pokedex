@@ -83,6 +83,25 @@ main {
     margin: 85px auto 0;
     flex: 1;
 }
+
+.pokemon-height {
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.pokemon-height__item {
+    width: auto;
+    min-height: auto;
+}
+
+.pokemon-height h2 {
+    grid-column: 1 / span 3;
+    text-align: center;
+}
+
 footer {
     display: flex;
     align-items: center;
