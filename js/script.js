@@ -67,7 +67,7 @@ let pokemonList = [
 
 // Create table of all Pokemon in pokemonList
 
-let table = document.querySelector("table");
+let table = document.querySelector('.pokemon-table');
 let data = Object.keys(pokemonList[0]);
     // creates table headers
 function generateTableHead(table, data) {
