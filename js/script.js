@@ -107,5 +107,5 @@ function generateTable(table, data) {
     }
 }
 
-generateTable(table, pokemonList);
-generateTableHead(table, data);
+// generateTable(table, pokemonList);
+// generateTableHead(table, data);
