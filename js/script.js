@@ -86,8 +86,8 @@ function generateTable(table, data) {
         let row = table.insertRow();
         for (let key in element) {
             let cell = row.insertCell();
-            if (element[key].length > 1 && typeof element[key] == 'object') { 
             // test if a the 'types' key-value pair has multiple values
+            if (key === 'types' && element[key].length > 1) { 
                 let multiEntryArray = '';
                 for (let value of element[key]) {
                     // check if it is the last value in the key-value pair
