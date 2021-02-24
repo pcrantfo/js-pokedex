@@ -168,4 +168,35 @@ table td, table th {
     }
 }
 
+@media all and (max-width: 550px) {
+    .container {
+        min-height: 100vh;
+        display: flex;
+        flex-flow: column wrap;
+    }
+
+    header {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        border-bottom: 5px solid var(--tertiary-color);
+        border-right: none;
+    }
+
+    .header-top{
+        text-align: left;
+        padding: 0 0 0 10px;
+    }
+
+    .header-bottom {
+        text-align: right;
+        padding: 0 10px 0 0;
+    }
+
+    main {
+        flex: 1;
+        margin: 95px auto 0;
+    }
 }
