@@ -1,3 +1,38 @@
+/* FONT STYLES */
+
+body {
+    font-family: var(--body-font);
+    font-size: 16px;
+    font-weight: var(--body-regular);
+    line-height: 1.6;
+    background-color: var(--bg-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+font-family: var(--header-font);
+line-height: 1;
+margin: 1.5em 0 1em;
+}
+
+h1 {
+font-size: 30px;
+font-weight: var(--header-bold);
+}
+
+h2 {
+font-size: 24px;
+font-weight: var(--header-semi-bold);
+}
+
+h3 {
+font-size: 20px;
+font-weight: var(--header-semi-bold);
+}
 .container {
 header {
     width: 100%;
