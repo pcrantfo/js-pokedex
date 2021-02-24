@@ -85,11 +85,11 @@ function generateTable(table, data) {
             let cell = row.insertCell();
             if (element[key].length > 1 && typeof element[key] == 'object') { 
                 let multiEntryArray = '';
-                for (let i of element[key]) {
-                    if (i == element[key][element[key].length-1]) {
-                        multiEntryArray += `${i}`;
+                for (let value of element[key]) {
+                    if (value === element[key][element[key].length-1]) {
+                        multiEntryArray += `${value}`;
                     } else {
-                        multiEntryArray += `${i}, `;
+                        multiEntryArray += `${value}, `;
                     }
                 }
                 let text = document.createTextNode(multiEntryArray);
