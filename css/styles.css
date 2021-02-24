@@ -50,6 +50,10 @@ h3 {
 font-size: 20px;
 font-weight: var(--header-semi-bold);
 }
+* {
+    box-sizing: border-box;
+}
+
 .container {
 header {
     width: 100%;
