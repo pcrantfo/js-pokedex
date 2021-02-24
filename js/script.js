@@ -64,9 +64,12 @@ let pokemonList = [
 //      };
 //  };
 
+
+// Create table of all Pokemon in pokemonList
+
 let table = document.querySelector("table");
 let data = Object.keys(pokemonList[0]);
-
+    // creates table headers
 function generateTableHead(table, data) {
     let thead = table.createTHead();
     let row = thead.insertRow();
@@ -77,15 +80,17 @@ function generateTableHead(table, data) {
         row.appendChild(th);
     }
 }
-
+    // creates table body
 function generateTable(table, data) {
     for (let element of data) {
         let row = table.insertRow();
         for (let key in element) {
             let cell = row.insertCell();
             if (element[key].length > 1 && typeof element[key] == 'object') { 
+            // test if a the 'types' key-value pair has multiple values
                 let multiEntryArray = '';
                 for (let value of element[key]) {
+                    // check if it is the last value in the key-value pair
                     if (value === element[key][element[key].length-1]) {
                         multiEntryArray += `${value}`;
                     } else {
