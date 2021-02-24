@@ -55,15 +55,24 @@ let pokemonList = [
     }
 ];
 
-//  for (let x of pokemonList) {
-//      console.log(x.nationalIndex);
-//      console.log(x.name);
-//      console.log(x.height);
-//      for (let i of x.types) {
-//          console.log(i);
-//      };
-//  };
-
+function pokemonHeight () {
+    let results = '';
+    for (let element of pokemonList) {
+        results += 
+            `<div class="pokemon-height__item">
+                <h3>${element.name}</h3>`
+        if (element.height < 2) {
+            results += 
+                `<p>Height: ${element.height}</p>
+            </div>`
+        } else {
+            results +=
+                `<p>Height: ${element.height} — How's the weather up there?</p>
+                </div>`
+        }
+    };
+    document.getElementById('pokemon-height').innerHTML = `<h2>Pokemon height info</h2> ${results}`;
+}
 
 // Create table of all Pokemon in pokemonList
 
@@ -109,3 +118,4 @@ function generateTable(table, data) {
 
 // generateTable(table, pokemonList);
 // generateTableHead(table, data);
+pokemonHeight();
