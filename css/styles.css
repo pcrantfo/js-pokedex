@@ -1,3 +1,20 @@
+/* VARIABLES */
+:root {
+    --primary-color: #ffde00;
+    --secondary-color: #3b4cca;
+    --tertiary-color: #ff0000;
+    --tertiary-color-highlight: #FA7676; 
+    --bg-color: #fafafa;
+    --bg-color-highlight: #F2F2F2;
+    --body-light: 300;
+    --body-regular: 400;
+    --header-medium: 500;
+    --header-semi-bold: 600;
+    --header-bold: 700;
+    --body-font: 'Open Sans', sans-serif;
+    --header-font: 'Raleway', sans-serif;
+}
+
 /* FONT STYLES */
 
 body {
