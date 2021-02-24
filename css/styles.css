@@ -134,5 +134,29 @@ table tr {
 
 table td, table th {
     padding: 5px;
-    border-left: 1 px solid black;
+    border-left: 1px solid black;
+}
+
+/* MEDIA QUERIES */
+  
+@media all and (min-width: 500px) and (max-width: 750px) {  
+    .pokemon-height {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .pokemon-height h2 {
+        grid-column: 1 / span 2;
+        text-align: left;
+    }
+}
+
+@media all and (max-width: 500px) {  
+    .pokemon-height {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pokemon-height h2 {
+        text-align: left;
+    }
 }
