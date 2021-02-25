@@ -63,11 +63,11 @@ function pokemonHeight () {
                 <h3>${element.name}</h3>`
         if (element.height < 2) {
             results += 
-                `<p>Height: ${element.height}</p>
+                `<p>Height: ${element.height}m.</p>
             </div>`
         } else {
             results +=
-                `<p>Height: ${element.height} — How's the weather up there?</p>
+                `<p>Height: ${element.height}m. — How's the weather up there?</p>
                 </div>`
         }
     };
