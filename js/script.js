@@ -55,12 +55,12 @@ let pokemonList = [
     }
 ];
 
-// pokemonHeight loops through pokemonList and returns all pokemon's height value (with dimension), as well as checking if a pokemon is taller than 2m.
+// pokemonHeight loops through a list of objects (pokemonList in this case) and returns all pokemon's height value (with dimension), as well as checking if a pokemon is taller than 2m.
 
 // Function will create a <div class="pokemon-height" each time function is called and insert that div before the end of the <main> element in the HTML.
-function pokemonHeight () {
+function pokemonHeight (pokedex) {
     let results = '';
-    for (let element of pokemonList) {
+    for (let element of pokedex) {
         results += 
             `<div class="pokemon-height__item">
                 <h3>${element.name}</h3>`
@@ -121,4 +121,4 @@ function generateTable(table, data) {
 
 // generateTable(table, pokemonList);
 // generateTableHead(table, data);
-pokemonHeight();
+pokemonHeight(pokemonList);
