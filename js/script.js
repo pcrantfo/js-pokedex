@@ -59,7 +59,6 @@ let pokemonList = [
 
 // Function will create a <div class="pokemon-height" each time function is called and insert that div before the end of the <main> element in the HTML.
 
-// Create table of all Pokemon in pokemonList
 
 }
 }
