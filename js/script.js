@@ -96,3 +96,14 @@ function writeHeights (content) {
     document.getElementsByTagName("main")[0].insertAdjacentHTML("beforeend", `<div class="pokemon-height"><h2>Pokemon height info</h2>${content}</div>`);
 };
 
+// combines three above functions to write a nested div structure displaying all meter-formatted heights of the pokemon in pokemonList
+(function () {
+    let results = "";
+    pokemonList.forEach(function(pokedexEntry) {
+        results += formatHeightDiv(pokedexEntry);
+        return results;
+    });
+    writeHeights(results);
+})();
+
+// pokemonHeight(pokemonList);
