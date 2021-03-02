@@ -91,3 +91,8 @@ function formatHeightDiv (pokedexEntry) {
     return heightDiv;
 }
 
+// writes a div containing pokemon height divs at the end of main tag in HTML body
+function writeHeights (content) {
+    document.getElementsByTagName("main")[0].insertAdjacentHTML("beforeend", `<div class="pokemon-height"><h2>Pokemon height info</h2>${content}</div>`);
+};
+
