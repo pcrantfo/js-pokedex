@@ -84,5 +84,10 @@ function formatHeightInMeters (pokedexEntry) {
     let heightInMeters = pokedexEntry.height < 2 ? `${pokedexEntry.height}m.` : `${pokedexEntry.height}m. — How's the weather up there?`;
     return heightInMeters;
 }
+
+// creates divs with pokemon name and height information within them
+function formatHeightDiv (pokedexEntry) {
+    let heightDiv  = `<div class=pokemon-height__item><h3>${pokedexEntry.name}</h3><p>${formatHeightInMeters(pokedexEntry)}</p></div>`;
+    return heightDiv;
 }
 
