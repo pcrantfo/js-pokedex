@@ -78,6 +78,11 @@ let pokemonList = [
 //     document.getElementsByTagName("main")[0].insertAdjacentHTML("beforeend", `<div class="pokemon-height"><h2>Pokemon height info</h2>${results}</div>`);
 // }
 
+
+// takes pokemon height, tests to see if it is greater than 2, then formats it in meters.
+function formatHeightInMeters (pokedexEntry) {
+    let heightInMeters = pokedexEntry.height < 2 ? `${pokedexEntry.height}m.` : `${pokedexEntry.height}m. — How's the weather up there?`;
+    return heightInMeters;
 }
 }
 
