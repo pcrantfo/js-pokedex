@@ -79,46 +79,7 @@ function pokemonHeight (pokedex) {
 
 // Create table of all Pokemon in pokemonList
 
-let table = document.querySelector('.pokemon-table');
-let data = Object.keys(pokemonList[0]);
-    // creates table headers
-function generateTableHead(table, data) {
-    let thead = table.createTHead();
-    let row = thead.insertRow();
-    for (let key of data) {
-        let th = document.createElement("th");
-        let text = document.createTextNode(key);
-        th.appendChild(text);
-        row.appendChild(th);
-    }
 }
-    // creates table body
-function generateTable(table, data) {
-    for (let element of data) {
-        let row = table.insertRow();
-        for (let key in element) {
-            let cell = row.insertCell();
-            // test if a the 'types' key-value pair has multiple values
-            if (key === 'types' && element[key].length > 1) { 
-                let multiEntryArray = '';
-                for (let value of element[key]) {
-                    // check if it is the last value in the key-value pair
-                    if (value === element[key][element[key].length-1]) {
-                        multiEntryArray += `${value}`;
-                    } else {
-                        multiEntryArray += `${value}, `;
-                    }
-                }
-                let text = document.createTextNode(multiEntryArray);
-                cell.appendChild(text);
-            } else {
-                let text = document.createTextNode(element[key]);
-                cell.appendChild(text);
-            }
-        }
-    }
 }
 
-// generateTable(table, pokemonList);
-// generateTableHead(table, data);
 pokemonHeight(pokemonList);
