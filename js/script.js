@@ -61,12 +61,68 @@ let pokemonRepository = (function () {
 
     return {
         add: function(pokemon) {
+
+            if (typeof(pokemon) !== 'object') {
+                alert(`${pokemon} is not the correct format to add to pokemonList`);
+            } else if (keysInEntry.length !== 4) {
+                alert(`pokemonList entry requires four key-value pairs`);
+            } else if (keysInEntry[0] !== 'nationalIndex') {
+                alert(`${keysInEntry[0]} is not a valid key for pokemonList`);
+            } else if (keysInEntry[1] !== 'name') {
+                alert(`${keysInEntry[1]} is not a valid key for pokemonList`);
+            } else if (keysInEntry[2] !== 'height') {
+                alert(`${keysInEntry[2]} is not a valid key for pokemonList`);
+            } else if (keysInEntry[3] !== 'types') {
+                alert(`${keysInEntry[3]} is not a valid key for pokemonList`);
+            } else {
+                pokemonList.push(pokemon);
+            }
         },
         getAll: function() {
             return pokemonList;
         },
     }
 })();
+
+// Test alerts in if statements
+// pokemonRepository.add('not an object');
+// pokemonRepository.add({
+//     natlIndex: 10, 
+//     name: 'caterpie', 
+//     height: 0.3, 
+//     types: 'bug'
+// });
+// pokemonRepository.add({
+//     nationalIndex: 10, 
+//     na: 'caterpie', 
+//     height: 0.3, 
+//     types: 'bug'
+// });
+// pokemonRepository.add({
+//     nationalIndex: 10, 
+//     name: 'caterpie', 
+//     hgt: 0.3, 
+//     types: 'bug'
+// });
+// pokemonRepository.add({
+//     nationalIndex: 10, 
+//     name: 'caterpie', 
+//     height: 0.3, 
+//     typs: 'bug'
+// });
+// pokemonRepository.add({
+//     nationalIndex: 10, 
+//     name: 'caterpie', 
+//     height: 0.3, 
+// });
+
+// correct entry
+pokemonRepository.add({
+    nationalIndex: 10, 
+    name: 'caterpie', 
+    height: 0.3, 
+    types: 'bug'
+});
 
 
 // pokemonHeight loops through a list of objects (pokemonList in this case) and returns all pokemon's height value (with dimension), as well as checking if a pokemon is taller than 2m.
