@@ -82,6 +82,7 @@ let pokemonRepository = (function () {
         getAll: function() {
             return pokemonList;
         },
+        // Search pokemonList for a pokemon name and return that pokemon's information, or an alert if it is not in the pokemonList
         findByName: function(pokemonName) {
             let allPokemon = pokemonRepository.getAll();
             let listOfNames = allPokemon.filter(entry => entry.name === pokemonName);
@@ -132,8 +133,9 @@ pokemonRepository.add({
 
 console.log(pokemonRepository.getAll());
 
-console.log(pokemonRepository.findByName('charizard'));
-console.log(pokemonRepository.findByName('caerpie'))
+// test findByName
+// console.log(pokemonRepository.findByName('charizard'));
+// console.log(pokemonRepository.findByName('caerpie'))
 
 // pokemonHeight loops through a list of objects (pokemonList in this case) and returns all pokemon's height value (with dimension), as well as checking if a pokemon is taller than 2m.
 
