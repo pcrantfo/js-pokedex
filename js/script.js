@@ -61,6 +61,7 @@ let pokemonRepository = (function () {
 
     return {
         add: function(pokemon) {
+            let keysInEntry = Object.keys(pokemon);
 
             if (typeof(pokemon) !== 'object') {
                 alert(`${pokemon} is not the correct format to add to pokemonList`);
@@ -81,6 +82,11 @@ let pokemonRepository = (function () {
         getAll: function() {
             return pokemonList;
         },
+        findByName: function(pokemonName) {
+            let allPokemon = pokemonRepository.getAll();
+            let listOfNames = allPokemon.filter(entry => entry.name === pokemonName);
+            return listOfNames.length === 0 ? alert(`${pokemonName} not in pokemonList`) : listOfNames;
+        }
     }
 })();
 
@@ -124,6 +130,10 @@ pokemonRepository.add({
     types: 'bug'
 });
 
+console.log(pokemonRepository.getAll());
+
+console.log(pokemonRepository.findByName('charizard'));
+console.log(pokemonRepository.findByName('caerpie'))
 
 // pokemonHeight loops through a list of objects (pokemonList in this case) and returns all pokemon's height value (with dimension), as well as checking if a pokemon is taller than 2m.
 
