@@ -91,76 +91,6 @@ let pokemonRepository = (function () {
     }
 })();
 
-// Test alerts in if statements
-// pokemonRepository.add('not an object');
-// pokemonRepository.add({
-//     natlIndex: 10, 
-//     name: 'caterpie', 
-//     height: 0.3, 
-//     types: 'bug'
-// });
-// pokemonRepository.add({
-//     nationalIndex: 10, 
-//     na: 'caterpie', 
-//     height: 0.3, 
-//     types: 'bug'
-// });
-// pokemonRepository.add({
-//     nationalIndex: 10, 
-//     name: 'caterpie', 
-//     hgt: 0.3, 
-//     types: 'bug'
-// });
-// pokemonRepository.add({
-//     nationalIndex: 10, 
-//     name: 'caterpie', 
-//     height: 0.3, 
-//     typs: 'bug'
-// });
-// pokemonRepository.add({
-//     nationalIndex: 10, 
-//     name: 'caterpie', 
-//     height: 0.3, 
-// });
-
-// correct entry
-pokemonRepository.add({
-    nationalIndex: 10, 
-    name: 'caterpie', 
-    height: 0.3, 
-    types: 'bug'
-});
-
-console.log(pokemonRepository.getAll());
-
-// test findByName
-// console.log(pokemonRepository.findByName('charizard'));
-// console.log(pokemonRepository.findByName('caerpie'))
-
-// pokemonHeight loops through a list of objects (pokemonList in this case) and returns all pokemon's height value (with dimension), as well as checking if a pokemon is taller than 2m.
-
-// Function will create a <div class="pokemon-height" each time function is called and insert that div before the end of the <main> element in the HTML.
-
-// function pokemonHeight (pokedex) {
-//     let results = '';
-//     for (let element of pokedex) {
-//         results += 
-//             `<div class="pokemon-height__item">
-//                 <h3>${element.name}</h3>`
-//         if (element.height < 2) {
-//             results += 
-//                 `<p>Height: ${element.height}m.</p>
-//             </div>`
-//         } else {
-//             results +=
-//                 `<p>Height: ${element.height}m. — How's the weather up there?</p>
-//                 </div>`
-//         }
-//     };
-//     document.getElementsByTagName("main")[0].insertAdjacentHTML("beforeend", `<div class="pokemon-height"><h2>Pokemon height info</h2>${results}</div>`);
-// }
-
-
 // takes pokemon height, tests to see if it is greater than 2, then formats it in meters.
 function formatHeightInMeters (pokedexEntry) {
     let heightInMeters = pokedexEntry.height < 2 ? `${pokedexEntry.height}m.` : `${pokedexEntry.height}m. — How's the weather up there?`;
@@ -188,4 +118,31 @@ function writeHeights (content) {
     writeHeights(results);
 })();
 
-// pokemonHeight(pokemonList);
+function pokemonListBox() {
+    let pokemonArray = pokemonRepository.getAll();
+    let unorderedList = document.createElement('ul');
+    unorderedList.classList.add('pokemon-list');
+
+    let unorderedListHeader = document.createElement('h1');
+    unorderedListHeader.innerText = 'Pokemon';
+    unorderedList.appendChild(unorderedListHeader);
+
+    pokemonArray.forEach(function(pokedexEntry) {
+        let unorderedListItem = document.createElement('li');
+        unorderedListItem.classList.add('pokemon-list__item');
+
+        let unorderedListButton = document.createElement('button');
+        unorderedListButton.classList.add('pokemon-list__button');
+        unorderedListButton.innerText = pokedexEntry.name;
+
+        unorderedListItem.appendChild(unorderedListButton);
+
+        unorderedList.appendChild(unorderedListItem);
+    })
+
+    document.getElementsByTagName("main")[0].appendChild(unorderedList);
+
+    console.log(unorderedList);
+}
+
+pokemonListBox();

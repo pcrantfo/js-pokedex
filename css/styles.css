@@ -99,6 +99,7 @@ header {
 main {
     margin: 0 auto 0 225px;
     flex: 1 1 auto;
+    padding-bottom: 50px;
 }
 
 .pokemon-height {
@@ -117,6 +118,31 @@ main {
 .pokemon-height h2 {
     grid-column: 1 / span 3;
     text-align: center;
+}
+
+.pokemon-list {
+    list-style-type: none;
+    width: 500px;
+    padding: 50px;
+    margin: 50px auto 0;
+    border: 5px solid var(--tertiary-color);
+}
+
+.pokemon-list h1 {
+    margin-top: 0;
+}
+
+.pokemon-list__item button {
+    width: 100%;
+    text-align: left;
+    padding: 20px;
+    margin-bottom: 5px;
+    border: none;
+    background-color: var(--bg-color-highlight);
+}
+
+.pokemon-list__item button:hover {
+    background-color: var(--bg-color);
 }
 
 /* TABLE STYLES */
