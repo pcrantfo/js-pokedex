@@ -1,6 +1,5 @@
 // https://pokedex.org/
 
-// create IIFE to store pokemonList array with functions .add and .getAll to modify or access pokemonList
 let pokemonRepository = (function () {
     let pokemonList = [
         {
@@ -141,6 +140,10 @@ function pokemonListBox() {
 
 
 pokemonListBox();
+
+/**======================
+ *    Button toggle
+ *========================**/
 
 const listButtons = document.querySelectorAll('.pokemon-list__button');
 
