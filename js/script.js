@@ -104,6 +104,9 @@ let pokemonRepository = (function () {
 
             return pokemonType;
         },
+        showDetails: function(pokedexEntry) {
+            console.log(pokedexEntry);
+        },
         addListItem: function(pokedexEntry) {
             let unorderedListItem = document.createElement('li');
             unorderedListItem.classList.add('pokemon-list__item');
@@ -116,9 +119,9 @@ let pokemonRepository = (function () {
              *========================**/
             unorderedListButton.addEventListener('click', function (event) {
                 let activeElement = event.currentTarget;
-                console.log(activeElement);
         
                 activeElement.querySelectorAll('.pokemon-list__toggle').forEach(v => v.classList.toggle('is-not-visible'));
+                pokemonRepository.showDetails(pokedexEntry);
             });
 
             let buttonDiv = document.createElement('div');
@@ -155,6 +158,7 @@ let pokemonRepository = (function () {
             unorderedListButton.appendChild(buttonDiv);
 
             unorderedListItem.appendChild(unorderedListButton);
+
             return unorderedListItem;
         }
     }
@@ -175,8 +179,6 @@ function pokemonListBox() {
     })
 
     document.getElementsByTagName("main")[0].appendChild(unorderedList);
-
-    console.log(unorderedList);
 }
 
 
