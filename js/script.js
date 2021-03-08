@@ -87,21 +87,26 @@ let pokemonRepository = (function () {
             let allPokemon = pokemonRepository.getAll();
             let listOfNames = allPokemon.filter(entry => entry.name === pokemonName);
             return listOfNames.length === 0 ? alert(`${pokemonName} not in pokemonList`) : listOfNames;
-        }
-    }
-})();
+        },
+        addListItem: function(pokedexEntry) {
+            let unorderedListItem = document.createElement('li');
+            unorderedListItem.classList.add('pokemon-list__item');
 
 // takes pokemon height, tests to see if it is greater than 2, then formats it in meters.
 function formatHeightInMeters (pokedexEntry) {
     let heightInMeters = pokedexEntry.height < 2 ? `${pokedexEntry.height}m.` : `${pokedexEntry.height}m. — How's the weather up there?`;
     return heightInMeters;
 }
+            let unorderedListButton = document.createElement('button');
+            unorderedListButton.classList.add('pokemon-list__button');
 
 // creates divs with pokemon name and height information within them
 function formatHeightDiv (pokedexEntry) {
     let heightDiv  = `<div class=pokemon-height__item><h3>${pokedexEntry.name}</h3><p>${formatHeightInMeters(pokedexEntry)}</p></div>`;
     return heightDiv;
 }
+            let buttonDiv = document.createElement('div');
+            buttonDiv.classList.add('button-header');
 
 // writes a div containing pokemon height divs at the end of main tag in HTML body
 function writeHeights (content) {
@@ -116,6 +121,26 @@ function writeHeights (content) {
         return results;
     });
     writeHeights(results);
+            let buttonDivP = document.createElement('p');
+            buttonDivP.innerText = pokedexEntry.name;
+
+            let buttonDivMore = document.createElement('div');
+            buttonDivMore.classList.add('pokemon-list__toggle');
+            buttonDivMore.innerText = 'Show more +'
+            let buttonDivLess = document.createElement('div');
+            buttonDivLess.classList.add('pokemon-list__toggle', 'is-not-visible');
+            buttonDivLess.innerText = 'Show less -'
+
+            buttonDiv.appendChild(buttonDivP);
+            buttonDiv.appendChild(buttonDivMore);
+            buttonDiv.appendChild(buttonDivLess);
+
+            unorderedListButton.appendChild(buttonDiv);
+
+            unorderedListItem.appendChild(unorderedListButton);
+            return unorderedListItem;
+        }
+    }
 })();
 
 function pokemonListBox() {
@@ -137,6 +162,7 @@ function pokemonListBox() {
 
         unorderedListItem.appendChild(unorderedListButton);
 
+        let unorderedListItem = pokemonRepository.addListItem(pokedexEntry);
         unorderedList.appendChild(unorderedListItem);
     })
 
@@ -145,4 +171,8 @@ function pokemonListBox() {
     console.log(unorderedList);
 }
 
+
 pokemonListBox();
+
+});
+

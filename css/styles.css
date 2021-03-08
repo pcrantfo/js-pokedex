@@ -122,7 +122,8 @@ main {
 
 .pokemon-list {
     list-style-type: none;
-    width: 500px;
+    width: 80%;
+    min-width: 300px;
     padding: 50px;
     margin: 50px auto 0;
     border: 5px solid var(--tertiary-color);
@@ -132,7 +133,7 @@ main {
     margin-top: 0;
 }
 
-.pokemon-list__item button {
+.pokemon-list__button {
     width: 100%;
     text-align: left;
     padding: 20px;
@@ -141,8 +142,9 @@ main {
     background-color: var(--bg-color-highlight);
 }
 
-.pokemon-list__item button:hover {
+.pokemon-list__button:hover {
     background-color: var(--bg-color);
+    cursor: pointer;
 }
 
 /* TABLE STYLES */
@@ -151,15 +153,25 @@ table {
     border-collapse: collapse;
     text-align: left;
     margin: 0 auto;
+.is-not-visible {
+    display: none;
 }
 
 table tr {
     border: 1px solid black;
+.button-header {
+    font-family: var(--header-font);
+    font-weight: var(--header-medium);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 table td, table th {
     padding: 5px;
     border-left: 1px solid black;
+.button-header p {
+    font-weight: var(--header-bold);
 }
 
 /* MEDIA QUERIES */
