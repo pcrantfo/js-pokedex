@@ -174,5 +174,15 @@ function pokemonListBox() {
 
 pokemonListBox();
 
+const listButtons = document.querySelectorAll('.pokemon-list__button');
+
+listButtons.forEach(function (button) {
+    console.log(button);
+    button.addEventListener('click', function (event) {
+        let activeElement = event.currentTarget;
+        console.log(activeElement);
+
+        activeElement.querySelectorAll('.pokemon-list__toggle').forEach(v => v.classList.toggle('is-not-visible'));
+    });
 });
 
