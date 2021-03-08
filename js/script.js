@@ -92,35 +92,12 @@ let pokemonRepository = (function () {
             let unorderedListItem = document.createElement('li');
             unorderedListItem.classList.add('pokemon-list__item');
 
-// takes pokemon height, tests to see if it is greater than 2, then formats it in meters.
-function formatHeightInMeters (pokedexEntry) {
-    let heightInMeters = pokedexEntry.height < 2 ? `${pokedexEntry.height}m.` : `${pokedexEntry.height}m. — How's the weather up there?`;
-    return heightInMeters;
-}
             let unorderedListButton = document.createElement('button');
             unorderedListButton.classList.add('pokemon-list__button');
 
-// creates divs with pokemon name and height information within them
-function formatHeightDiv (pokedexEntry) {
-    let heightDiv  = `<div class=pokemon-height__item><h3>${pokedexEntry.name}</h3><p>${formatHeightInMeters(pokedexEntry)}</p></div>`;
-    return heightDiv;
-}
             let buttonDiv = document.createElement('div');
             buttonDiv.classList.add('button-header');
 
-// writes a div containing pokemon height divs at the end of main tag in HTML body
-function writeHeights (content) {
-    document.getElementsByTagName("main")[0].insertAdjacentHTML("beforeend", `<div class="pokemon-height"><h2>Pokemon height info</h2>${content}</div>`);
-};
-
-// combines three above functions to write a nested div structure displaying all meter-formatted heights of the pokemon in pokemonList
-(function () {
-    let results = "";
-    pokemonRepository.getAll().forEach(function(pokedexEntry) {
-        results += formatHeightDiv(pokedexEntry);
-        return results;
-    });
-    writeHeights(results);
             let buttonDivP = document.createElement('p');
             buttonDivP.innerText = pokedexEntry.name;
 
@@ -153,15 +130,6 @@ function pokemonListBox() {
     unorderedList.appendChild(unorderedListHeader);
 
     pokemonArray.forEach(function(pokedexEntry) {
-        let unorderedListItem = document.createElement('li');
-        unorderedListItem.classList.add('pokemon-list__item');
-
-        let unorderedListButton = document.createElement('button');
-        unorderedListButton.classList.add('pokemon-list__button');
-        unorderedListButton.innerText = pokedexEntry.name;
-
-        unorderedListItem.appendChild(unorderedListButton);
-
         let unorderedListItem = pokemonRepository.addListItem(pokedexEntry);
         unorderedList.appendChild(unorderedListItem);
     })
