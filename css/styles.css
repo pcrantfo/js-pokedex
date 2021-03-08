@@ -123,7 +123,7 @@ main {
     width: 100%;
     text-align: left;
     padding: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     border: none;
     background-color: var(--bg-color-highlight);
 }
