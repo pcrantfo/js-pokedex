@@ -11,7 +11,6 @@ let pokemonRepository = (function () {
         getAll: function() {
             return pokemonList;
         },
-        // Search pokemonList for a pokemon name and return that pokemon's information, or an alert if it is not in the pokemonList
         findByName: function(pokemonName) {
             let allPokemon = pokemonRepository.getAll();
             let listOfNames = allPokemon.filter(entry => entry.name === pokemonName);
@@ -93,6 +92,22 @@ let pokemonRepository = (function () {
 
             return unorderedListItem;
         },
+        pokemonListBox: function () {
+            let pokemonArray = pokemonRepository.getAll();
+            let unorderedList = document.createElement('ul');
+            unorderedList.classList.add('pokemon-list');
+        
+            let unorderedListHeader = document.createElement('h1');
+            unorderedListHeader.innerText = 'POKEMON';
+            unorderedList.appendChild(unorderedListHeader);
+        
+            pokemonArray.forEach(function(pokedexEntry) {
+                let unorderedListItem = pokemonRepository.addListItem(pokedexEntry);
+                unorderedList.appendChild(unorderedListItem);
+            })
+        
+            document.getElementsByTagName("main")[0].appendChild(unorderedList);
+        },
         loadList: function () {
             return fetch(apiUrl).then(function (response) {
                 return response.json();
@@ -126,32 +141,7 @@ let pokemonRepository = (function () {
 
 pokemonRepository.loadList().then(function() {
     // Now the data is loaded!
-    pokemonRepository.getAll().forEach(function(pokemon){
-      pokemonRepository.addListItem(pokemon);
-    });
+    pokemonRepository.pokemonListBox();
   });
 
-function pokemonListBox() {
-    let pokemonArray = pokemonRepository.getAll();
-    let unorderedList = document.createElement('ul');
-    unorderedList.classList.add('pokemon-list');
-
-    let unorderedListHeader = document.createElement('h1');
-    unorderedListHeader.innerText = 'POKEMON';
-    unorderedList.appendChild(unorderedListHeader);
-
-    pokemonArray.forEach(function(pokedexEntry) {
-        let unorderedListItem = pokemonRepository.addListItem(pokedexEntry);
-        unorderedList.appendChild(unorderedListItem);
-    })
-
-    document.getElementsByTagName("main")[0].appendChild(unorderedList);
-}
-
 // pokemonListBox();
-
-let testPokemon = pokemonRepository.getAll();
-console.log(testPokemon);
-testPokemon.forEach(function (object) {
-    console.log(object.name);
-})
