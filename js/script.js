@@ -36,6 +36,7 @@ let pokemonRepository = (function () {
         showDetails: function(pokedexEntry) {
             pokemonRepository.loadDetails(pokedexEntry).then(function () {
                 console.log(pokedexEntry);
+                return pokedexEntry;
             });
         },
         addListItem: function(pokedexEntry) {
@@ -49,9 +50,9 @@ let pokemonRepository = (function () {
              *    Button toggle
              *========================**/
             unorderedListButton.addEventListener('click', function (event) {
-                // let activeElement = event.currentTarget;
+                let activeElement = event.currentTarget;
         
-                // activeElement.querySelectorAll('.pokemon-list__toggle').forEach(v => v.classList.toggle('is-not-visible'));
+                activeElement.querySelectorAll('.pokemon-list__toggle').forEach(v => v.classList.toggle('is-not-visible'));
                 pokemonRepository.showDetails(pokedexEntry);
             });
 
@@ -68,23 +69,23 @@ let pokemonRepository = (function () {
             buttonDivLess.classList.add('pokemon-list__toggle', 'is-not-visible');
             buttonDivLess.innerHTML = `<p>Show less -</p>`;
 
-            // let buttonContent = document.createElement('div');
-            // buttonContent.classList.add('pokemon-list__button-content', 'pokemon-list__toggle', 'is-not-visible');
+            let buttonContent = document.createElement('div');
+            buttonContent.classList.add('pokemon-list__button-content', 'pokemon-list__toggle', 'is-not-visible');
 
             // let pokemonTypes = pokemonRepository.getTypes(pokedexEntry);
 
-            // buttonContent.innerHTML = 
-            //     `<p>
-            //         <strong>Height:</strong> ${pokedexEntry.height}m.
-            //     </p>
-            //     <p>
-            //         <strong>Types:</strong> ${pokemonTypes}
-            //     </p>`;
+            buttonContent.innerHTML = 
+                `<p>
+                    <strong>Height:</strong> ${pokedexEntry.height}m.
+                </p>`;
+                // <p>
+                //     <strong>Types:</strong> ${pokemonTypes}
+                // </p>`;
 
             buttonDiv.appendChild(buttonDivP);
             buttonDiv.appendChild(buttonDivMore);
             buttonDiv.appendChild(buttonDivLess);
-            // buttonDiv.appendChild(buttonContent);
+            buttonDiv.appendChild(buttonContent);
 
             unorderedListButton.appendChild(buttonDiv);
 
