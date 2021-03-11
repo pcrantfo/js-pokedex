@@ -16,6 +16,11 @@ let pokemonRepository = (function () {
             let listOfNames = allPokemon.filter(entry => entry.name === pokemonName);
             return listOfNames.length === 0 ? alert(`${pokemonName} not in pokemonList`) : listOfNames;
         },
+    
+/**======================
+ *    CUT HERE FOR INFO SECTION PASTE
+ *    BE SURE TO TAB OVER TWICE
+ *========================**/
         showDetails: function(pokedexEntry) {
             pokemonRepository.loadDetails(pokedexEntry).then(function () {
                 console.log(pokedexEntry);
@@ -67,6 +72,9 @@ let pokemonRepository = (function () {
 
             return unorderedListItem;
         },
+    /**======================
+     *    END CUT
+     *========================**/
         pokemonListBox: function () {
             let pokemonArray = pokemonRepository.getAll();
             let unorderedList = document.createElement('ul');
