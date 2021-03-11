@@ -102,6 +102,15 @@ main {
     padding-bottom: 50px;
 }
 
+button {
+    font-family: var(--header-font);
+    font-weight: var(--header-medium);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
 .pokemon-list {
     list-style-type: none;
     width: 80%;
@@ -130,7 +139,10 @@ main {
 
 .pokemon-list__button:hover {
     background-color: var(--bg-color);
-    cursor: pointer;
+}
+
+.pokemon-list__button:focus {
+    outline: none;
 }
 
 .is-not-visible {
@@ -138,8 +150,6 @@ main {
 }
 
 .button-header {
-    font-family: var(--header-font);
-    font-weight: var(--header-medium);
     display: flex;
     flex-flow: row wrap;
     align-items: center;
