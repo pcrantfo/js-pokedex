@@ -16,27 +16,25 @@ let pokemonRepository = (function () {
             let listOfNames = allPokemon.filter(entry => entry.name === pokemonName);
             return listOfNames.length === 0 ? alert(`${pokemonName} not in pokemonList`) : listOfNames;
         },
-        getTypes: function(pokedexEntry) {
-            let pokemonType = '';
-
-            if (pokedexEntry.types.length > 1) {
-                for (let i in pokedexEntry.types) {
-                    if (parseInt(i) === pokedexEntry.types.length - 1) {
-                        pokemonType += `${pokedexEntry.types[i]}`;
-                    } else {
-                        pokemonType += `${pokedexEntry.types[i]}, `
-                    }
-                }
-            } else {
-                pokemonType += pokedexEntry.types;
-            }
-
-            return pokemonType;
-        },
         showDetails: function(pokedexEntry) {
             pokemonRepository.loadDetails(pokedexEntry).then(function () {
                 console.log(pokedexEntry);
                 return pokedexEntry;
+                function getTypes(pokedexTypes) {
+                    let types = '';
+                    let c = 1;
+                    pokedexTypes.forEach(function (typeEntry){
+                        console.log(pokedexTypes);
+                        console.log(c);
+                        if (parseInt(pokedexTypes.length) === c) {
+                            types += typeEntry.type.name;
+                        } else {
+                            types += `${typeEntry.type.name}, `;
+                            c += 1;
+                        }
+                    })
+                    return types;
+                }
             });
         },
         addListItem: function(pokedexEntry) {
