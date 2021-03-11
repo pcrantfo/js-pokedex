@@ -24,7 +24,62 @@ let pokemonRepository = (function () {
         showDetails: function(pokedexEntry) {
             pokemonRepository.loadDetails(pokedexEntry).then(function () {
                 console.log(pokedexEntry);
-                return pokedexEntry;
+
+                let modalContainer = document.createElement('div');
+                modalContainer.classList.add('modal-container');
+                modalContainer.innerHTML = '';
+
+                let modal = document.createElement('div');
+                modal.classList.add('modal');
+
+                let modalImage = document.createElement('img');
+                modalImage.classList.add('modal-image');
+                modalImage.src = pokedexEntry.imageUrl;
+
+                let modalInteriorDiv = document.createElement('div');
+                modalInteriorDiv.classList.add('modal-interior-div');
+                
+                let modalHeader = document.createElement('h2');
+                modalHeader.innerText = pokedexEntry.name;
+
+                let modalButton = document.createElement('button');
+                modalButton.classList.add('modal-button');
+                modalButton.innerText = 'close';
+                modalButton.addEventListener('click', hideModal);
+
+                let modalContent = document.createElement('div');
+                modalContent.classList.add('modal-content');
+                let pokemonListTypes = getTypes(pokedexEntry.types);
+                modalContent.innerHTML = 
+                `
+                    <p><strong>Height:</strong> ${pokedexEntry.height}m.</p>
+                    <p><strong>Types:</strong> ${pokemonListTypes}
+                `
+                modal.appendChild(modalImage);
+                modalInteriorDiv.appendChild(modalHeader);
+                modalInteriorDiv.appendChild(modalButton);
+                modalInteriorDiv.appendChild(modalContent);
+                modal.appendChild(modalInteriorDiv);
+                modalContainer.appendChild(modal);
+                document.getElementsByTagName('body')[0].appendChild(modalContainer);
+                
+                window.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && modalContainer) {
+                        hideModal();
+                    }
+                })
+
+                modalContainer.addEventListener('click', (e) => {
+                    let target = e.target;
+                    if (target === modalContainer) {
+                        hideModal();
+                    }
+                })
+
+                function hideModal() {
+                    modalContainer.remove();
+                }
+
                 function getTypes(pokedexTypes) {
                     let types = '';
                     let c = 1;
@@ -85,6 +140,8 @@ let pokemonRepository = (function () {
             unorderedList.appendChild(unorderedListHeader);
         
             pokemonArray.forEach(function(pokedexEntry) {
+                pokemonRepository.loadDetails(pokedexEntry);
+
                 let unorderedListItem = pokemonRepository.addListItem(pokedexEntry);
                 unorderedList.appendChild(unorderedListItem);
             })
