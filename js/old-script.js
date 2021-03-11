@@ -56,6 +56,116 @@
     types: ['water']
 }
 ];
+/**======================
+ *    INFO SECTION ON CLICK
+ *========================**/
+//  showDetails: function(pokedexEntry) {
+//     // pokemonRepository.loadDetails(pokedexEntry).then(function () {
+//     console.log(pokedexEntry);
+
+//     let info = document.createElement('div');
+//     info.classList.add('info');
+
+//     let infoImage = document.createElement('img');
+//     infoImage.classList.add('info-image');
+//     infoImage.src = pokedexEntry.imageUrl;
+
+//     let infoInteriorDiv = document.createElement('div');
+//     infoInteriorDiv.classList.add('info-interior-div');
+    
+//     let infoHeader = document.createElement('h2');
+//     infoHeader.innerText = pokedexEntry.name;
+
+//     let infoContent = document.createElement('div');
+//     infoContent.classList.add('info-content');
+//     let pokemonListTypes = getTypes(pokedexEntry.types);
+//     infoContent.innerHTML = 
+//     `
+//         <p><strong>Height:</strong> ${pokedexEntry.height}m.</p>
+//         <p><strong>Types:</strong> ${pokemonListTypes}
+//     `
+//     info.appendChild(infoImage);
+//     infoInteriorDiv.appendChild(infoHeader);
+//     infoInteriorDiv.appendChild(infoContent);
+//     info.appendChild(infoInteriorDiv);
+
+//     function hideinfo() {
+//         info.remove();
+//     }
+
+//     function getTypes(pokedexTypes) {
+//         let types = '';
+//         let c = 1;
+//         pokedexTypes.forEach(function (typeEntry){
+//             console.log(pokedexTypes);
+//             console.log(c);
+//             if (parseInt(pokedexTypes.length) === c) {
+//                 types += typeEntry.type.name;
+//             } else {
+//                 types += `${typeEntry.type.name}, `;
+//                 c += 1;
+//             }
+//         })
+//         return types;
+//     }
+
+//     return info;
+//     // });
+// },
+// addListItem: function(pokedexEntry) {
+//     let unorderedListItem = document.createElement('li');
+//     unorderedListItem.classList.add('pokemon-list__item');
+
+//     let unorderedListButton = document.createElement('button');
+//     unorderedListButton.classList.add('pokemon-list__button');
+
+//      pokemonRepository.loadDetails(pokedexEntry).then(function () {
+//         let info = pokemonRepository.showDetails(pokedexEntry);
+        
+//         unorderedListButton.addEventListener('click', function (event) {
+//             let activeElement = event.currentTarget;
+    
+//             activeElement.querySelectorAll('.pokemon-list__toggle').forEach(v => v.classList.toggle('is-not-visible'));
+
+//             info.remove();
+//             if (info.classList.contains('is-visible')) {
+//                 info.classList.toggle('is-visible');
+//                 info.remove();
+//                 unorderedListItem.classList.toggle('clicked');
+//             } else {
+//                 console.log(info);
+//                 info.classList.toggle('is-visible');
+//                 unorderedListItem.appendChild(info);
+//                 unorderedListItem.classList.toggle('clicked');
+//             }
+//         });
+//     });
+
+//     let buttonDiv = document.createElement('div');
+//     buttonDiv.classList.add('button-header');
+
+//     let buttonDivP = document.createElement('h2');
+//     buttonDivP.innerText = pokedexEntry.name;
+
+//     let buttonDivMore = document.createElement('div');
+//     buttonDivMore.classList.add('pokemon-list__toggle');
+//     buttonDivMore.innerHTML = `<p>show more +</p>`;
+//     let buttonDivLess = document.createElement('div');
+//     buttonDivLess.classList.add('pokemon-list__toggle', 'is-not-visible');
+//     buttonDivLess.innerHTML = `<p>Show less -</p>`;
+
+//     buttonDiv.appendChild(buttonDivP);
+//     buttonDiv.appendChild(buttonDivMore);
+//     buttonDiv.appendChild(buttonDivLess);
+
+//     unorderedListButton.appendChild(buttonDiv);
+
+//     unorderedListItem.appendChild(unorderedListButton);
+
+//     return unorderedListItem;
+// },
+
+/**======================
  *    MODAL CODE: goes inside pokemonRepository
  *========================**/
 
