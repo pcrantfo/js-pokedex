@@ -128,11 +128,14 @@ button:hover {
     margin: 0;
 }
 
+.pokemon-list__item {
+    margin-bottom: 20px;
+}
+
 .pokemon-list__button {
     width: 100%;
     text-align: left;
     padding: 20px;
-    margin-bottom: 20px;
     border: none;
     background-color: var(--bg-color-highlight);
 }
