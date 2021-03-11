@@ -44,13 +44,7 @@ let pokemonRepository = (function () {
             let unorderedListButton = document.createElement('button');
             unorderedListButton.classList.add('pokemon-list__button');
 
-            /**======================
-             *    Button toggle
-             *========================**/
             unorderedListButton.addEventListener('click', function (event) {
-                let activeElement = event.currentTarget;
-        
-                activeElement.querySelectorAll('.pokemon-list__toggle').forEach(v => v.classList.toggle('is-not-visible'));
                 pokemonRepository.showDetails(pokedexEntry);
             });
 
@@ -62,28 +56,10 @@ let pokemonRepository = (function () {
 
             let buttonDivMore = document.createElement('div');
             buttonDivMore.classList.add('pokemon-list__toggle');
-            buttonDivMore.innerHTML = `<p>Show more +</p>`;
-            let buttonDivLess = document.createElement('div');
-            buttonDivLess.classList.add('pokemon-list__toggle', 'is-not-visible');
-            buttonDivLess.innerHTML = `<p>Show less -</p>`;
-
-            let buttonContent = document.createElement('div');
-            buttonContent.classList.add('pokemon-list__button-content', 'pokemon-list__toggle', 'is-not-visible');
-
-            // let pokemonTypes = pokemonRepository.getTypes(pokedexEntry);
-
-            buttonContent.innerHTML = 
-                `<p>
-                    <strong>Height:</strong> ${pokedexEntry.height}m.
-                </p>`;
-                // <p>
-                //     <strong>Types:</strong> ${pokemonTypes}
-                // </p>`;
+            buttonDivMore.innerHTML = `<p>show more +</p>`;
 
             buttonDiv.appendChild(buttonDivP);
             buttonDiv.appendChild(buttonDivMore);
-            buttonDiv.appendChild(buttonDivLess);
-            buttonDiv.appendChild(buttonContent);
 
             unorderedListButton.appendChild(buttonDiv);
 
@@ -111,10 +87,10 @@ let pokemonRepository = (function () {
             return fetch(apiUrl).then(function (response) {
                 return response.json();
             }).then(function (json) {
-                json.results.forEach(function (item) {
+                json.results.forEach(function (pokedexEntry) {
                     let pokemon = {
-                        name: item.name,
-                        detailsUrl: item.url
+                        name: pokedexEntry.name,
+                        detailsUrl: pokedexEntry.url
                     };
                     pokemonRepository.add(pokemon);
                 });
@@ -122,15 +98,15 @@ let pokemonRepository = (function () {
                 console.error(e);
             })
         },
-        loadDetails: function (item) {
-            let url = item.detailsUrl;
+        loadDetails: function (pokedexEntry) {
+            let url = pokedexEntry.detailsUrl;
             return fetch(url).then(function (response) {
               return response.json();
             }).then(function (details) {
-              // Now we add the details to the item
-              item.imageUrl = details.sprites.front_default;
-              item.height = details.height;
-              item.types = details.types;
+              // Now we add the details to the pokedexEntry
+              pokedexEntry.imageUrl = details.sprites.front_default;
+              pokedexEntry.height = details.height;
+              pokedexEntry.types = details.types;
             }).catch(function (e) {
               console.error(e);
             });
