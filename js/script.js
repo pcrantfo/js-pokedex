@@ -21,6 +21,7 @@ let pokemonRepository = (function () {
  *    CUT HERE FOR INFO SECTION PASTE
  *    BE SURE TO TAB OVER TWICE
  *========================**/
+
         showDetails: function(pokedexEntry) {
             pokemonRepository.loadDetails(pokedexEntry).then(function () {
                 console.log(pokedexEntry);
@@ -80,12 +81,12 @@ let pokemonRepository = (function () {
                     modalContainer.remove();
                 }
 
+                // Formats types with ', ' until last type entry
                 function getTypes(pokedexTypes) {
                     let types = '';
                     let c = 1;
                     pokedexTypes.forEach(function (typeEntry){
-                        console.log(pokedexTypes);
-                        console.log(c);
+
                         if (parseInt(pokedexTypes.length) === c) {
                             types += typeEntry.type.name;
                         } else {
