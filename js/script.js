@@ -2,7 +2,7 @@
 
 let pokemonRepository = (function () {
     let pokemonList = [];
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=386';
 
     return {
         add: function(pokemon) {
@@ -24,7 +24,7 @@ let pokemonRepository = (function () {
 
         // Function must be called in .loadDetails promise
         showDetails: function(pokedexEntry) {
-            console.log(pokedexEntry);
+            // console.log(pokedexEntry);
 
             let info = document.createElement('div');
             info.classList.add('info');
