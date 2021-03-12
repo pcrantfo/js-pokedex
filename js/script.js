@@ -22,81 +22,55 @@ let pokemonRepository = (function () {
  *    BE SURE TO TAB OVER TWICE
  *========================**/
 
+        // Function must be called in .loadDetails promise
         showDetails: function(pokedexEntry) {
-            pokemonRepository.loadDetails(pokedexEntry).then(function () {
-                console.log(pokedexEntry);
+            console.log(pokedexEntry);
 
-                let modalContainer = document.createElement('div');
-                modalContainer.classList.add('modal-container');
-                modalContainer.innerHTML = '';
+            let info = document.createElement('div');
+            info.classList.add('info');
 
-                let modal = document.createElement('div');
-                modal.classList.add('modal');
+            let infoImage = document.createElement('img');
+            infoImage.classList.add('info-image');
+            infoImage.src = pokedexEntry.imageUrl;
 
-                let modalImage = document.createElement('img');
-                modalImage.classList.add('modal-image');
-                modalImage.src = pokedexEntry.imageUrl;
+            let infoInteriorDiv = document.createElement('div');
+            infoInteriorDiv.classList.add('info-interior-div');
+            
+            let infoHeader = document.createElement('h2');
+            infoHeader.innerText = pokedexEntry.name;
 
-                let modalInteriorDiv = document.createElement('div');
-                modalInteriorDiv.classList.add('modal-interior-div');
-                
-                let modalHeader = document.createElement('h2');
-                modalHeader.innerText = pokedexEntry.name;
+            let infoContent = document.createElement('div');
+            infoContent.classList.add('info-content');
+            let pokemonListTypes = getTypes(pokedexEntry.types);
+            infoContent.innerHTML = 
+            `
+                <p><strong>Height:</strong> ${pokedexEntry.height}m.</p>
+                <p><strong>Types:</strong> ${pokemonListTypes}
+            `
+            info.appendChild(infoImage);
+            infoInteriorDiv.appendChild(infoHeader);
+            infoInteriorDiv.appendChild(infoContent);
+            info.appendChild(infoInteriorDiv);
 
-                let modalButton = document.createElement('button');
-                modalButton.classList.add('modal-button');
-                modalButton.innerText = 'close';
-                modalButton.addEventListener('click', hideModal);
+            function hideinfo() {
+                info.remove();
+            }
 
-                let modalContent = document.createElement('div');
-                modalContent.classList.add('modal-content');
-                let pokemonListTypes = getTypes(pokedexEntry.types);
-                modalContent.innerHTML = 
-                `
-                    <p><strong>Height:</strong> ${pokedexEntry.height}m.</p>
-                    <p><strong>Types:</strong> ${pokemonListTypes}
-                `
-                modal.appendChild(modalImage);
-                modalInteriorDiv.appendChild(modalHeader);
-                modalInteriorDiv.appendChild(modalButton);
-                modalInteriorDiv.appendChild(modalContent);
-                modal.appendChild(modalInteriorDiv);
-                modalContainer.appendChild(modal);
-                document.getElementsByTagName('body')[0].appendChild(modalContainer);
-                
-                window.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape' && modalContainer) {
-                        hideModal();
+            function getTypes(pokedexTypes) {
+                let types = '';
+                let c = 1;
+                pokedexTypes.forEach(function (typeEntry){
+                    if (parseInt(pokedexTypes.length) === c) {
+                        types += typeEntry.type.name;
+                    } else {
+                        types += `${typeEntry.type.name}, `;
+                        c += 1;
                     }
                 })
+                return types;
+            }
 
-                modalContainer.addEventListener('click', (e) => {
-                    let target = e.target;
-                    if (target === modalContainer) {
-                        hideModal();
-                    }
-                })
-
-                function hideModal() {
-                    modalContainer.remove();
-                }
-
-                // Formats types with ', ' until last type entry
-                function getTypes(pokedexTypes) {
-                    let types = '';
-                    let c = 1;
-                    pokedexTypes.forEach(function (typeEntry){
-
-                        if (parseInt(pokedexTypes.length) === c) {
-                            types += typeEntry.type.name;
-                        } else {
-                            types += `${typeEntry.type.name}, `;
-                            c += 1;
-                        }
-                    })
-                    return types;
-                }
-            });
+            return info;
         },
         addListItem: function(pokedexEntry) {
             let unorderedListItem = document.createElement('li');
@@ -105,8 +79,26 @@ let pokemonRepository = (function () {
             let unorderedListButton = document.createElement('button');
             unorderedListButton.classList.add('pokemon-list__button');
 
-            unorderedListButton.addEventListener('click', function (event) {
-                pokemonRepository.showDetails(pokedexEntry);
+            pokemonRepository.loadDetails(pokedexEntry).then(function () {
+                let info = pokemonRepository.showDetails(pokedexEntry);
+                
+                unorderedListButton.addEventListener('click', function (event) {
+                    let activeElement = event.currentTarget;
+            
+                    activeElement.querySelectorAll('.pokemon-list__toggle').forEach(v => v.classList.toggle('is-not-visible'));
+
+                    info.remove();
+                    if (info.classList.contains('is-visible')) {
+                        info.classList.toggle('is-visible');
+                        info.remove();
+                        unorderedListItem.classList.toggle('clicked');
+                    } else {
+                        console.log(info);
+                        info.classList.toggle('is-visible');
+                        unorderedListItem.appendChild(info);
+                        unorderedListItem.classList.toggle('clicked');
+                    }
+                });
             });
 
             let buttonDiv = document.createElement('div');
@@ -118,9 +110,13 @@ let pokemonRepository = (function () {
             let buttonDivMore = document.createElement('div');
             buttonDivMore.classList.add('pokemon-list__toggle');
             buttonDivMore.innerHTML = `<p>show more +</p>`;
+            let buttonDivLess = document.createElement('div');
+            buttonDivLess.classList.add('pokemon-list__toggle', 'is-not-visible');
+            buttonDivLess.innerHTML = `<p>Show less -</p>`;
 
             buttonDiv.appendChild(buttonDivP);
             buttonDiv.appendChild(buttonDivMore);
+            buttonDiv.appendChild(buttonDivLess);
 
             unorderedListButton.appendChild(buttonDiv);
 
