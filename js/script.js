@@ -35,9 +35,6 @@ let pokemonRepository = (function () {
 
             let infoInteriorDiv = document.createElement('div');
             infoInteriorDiv.classList.add('info-interior-div');
-            
-            let infoHeader = document.createElement('h2');
-            infoHeader.innerText = pokedexEntry.name;
 
             let infoContent = document.createElement('div');
             infoContent.classList.add('info-content');
@@ -48,7 +45,6 @@ let pokemonRepository = (function () {
                 <p><strong>Types:</strong> ${pokemonListTypes}
             `
             info.appendChild(infoImage);
-            infoInteriorDiv.appendChild(infoHeader);
             infoInteriorDiv.appendChild(infoContent);
             info.appendChild(infoInteriorDiv);
 

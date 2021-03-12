@@ -114,7 +114,7 @@ button:hover {
 .pokemon-list {
     list-style-type: none;
     width: 80%;
-    min-width: 300px;
+    min-width: 350px;
     padding: 50px;
     margin: 50px auto 0;
     border: 5px solid var(--tertiary-color);
@@ -222,11 +222,37 @@ button:hover {
   *    MEDIA QUERIES
   *========================**/
   
-@media all and (max-width: 725px) {
+@media all and (max-width: 800px) {
+    .pokemon-list {
+        border: none;
+        margin: 0;
+    }
     
+    .button-header {
+        flex-flow: column wrap;
+    }
+
+    .info {
+        flex-flow: column wrap;
+        align-items: center;
+    }
+
+    .info-interior-div {
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    .info-content {
+        text-align: center;
+    }
+
+    .info-content p {
+        margin-top: 0;
+    }
 }
 
-  @media all and (min-width: 650px) and (max-width: 750px) {  
+  /* @media all and (min-width: 650px) and (max-width: 750px) {  
     header {
         width: 175px;
     }
@@ -236,9 +262,9 @@ button:hover {
     header {
         width: 175px;
     }
-}
+} */
 
-@media all and (max-width: 550px) {
+@media all and (max-width: 675px) {
     .container {
         min-height: 100vh;
         display: flex;
