@@ -62,15 +62,16 @@ font-weight: var(--header-semi-bold);
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    overflow: auto;
 }
 
 header {
     width: 225px;
     height: 100vh;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-content: space-between;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: space-between;
     text-align: center;
     border-right: 5px solid var(--tertiary-color);
     position: fixed;
@@ -102,6 +103,15 @@ main {
     padding-bottom: 50px;
 }
 
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
 button {
     font-family: var(--header-font);
     font-weight: var(--header-medium);
@@ -109,6 +119,19 @@ button {
 
 button:hover {
     cursor: pointer;
+}
+
+.pokemon-list__links {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.pokemon-list__links a {
+    width: 100%;
+    display: block;
+    padding: 5px;
+    text-align: center;
 }
 
 .pokemon-list {
@@ -123,8 +146,12 @@ button:hover {
     margin-top: 0;
 }
 
-.pokemon-list h2 {
+.pokemon-list h3 {
     margin: 0;
+}
+
+.pokemon-generation {
+    color: var(--tertiary-color);
 }
 
 .pokemon-list__item {
@@ -282,20 +309,36 @@ button:hover {
         width: 100%;
         height: auto;
         display: flex;
-        flex-flow: row;
+        flex-flow: row wrap;
+        justify-content: space-between;
         align-items: center;
+        margin-bottom: 95px;
         border-bottom: 5px solid var(--tertiary-color);
         border-right: none;
     }
 
     .header-top{
+        width: auto;
         text-align: left;
         padding: 0 0 0 10px;
     }
 
     .header-bottom {
+        width: auto;
         text-align: right;
         padding: 0 10px 0 0;
+    }
+
+    header :nth-child(2) {
+        order: 3;
+        width: 100%;
+        flex-flow: row;
+    }
+
+    .pokemon-list__links a {
+        display: inline-block;
+        padding: 5px;
+        text-align: center;
     }
 
     main {
