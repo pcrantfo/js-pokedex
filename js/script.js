@@ -2,7 +2,7 @@
 
 let pokemonRepository = (function () {
     let pokemonList = [];
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=386';
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=151';
 
     return {
         add: function(pokemon) {
@@ -100,7 +100,7 @@ let pokemonRepository = (function () {
             let buttonDiv = document.createElement('div');
             buttonDiv.classList.add('button-header');
 
-            let buttonDivP = document.createElement('h3');
+            let buttonDivP = document.createElement('h2');
             buttonDivP.innerText = pokedexEntry.name;
 
             let buttonDivMore = document.createElement('div');
@@ -131,61 +131,15 @@ let pokemonRepository = (function () {
             let unorderedListHeader = document.createElement('h1');
             unorderedListHeader.innerText = 'POKEMON';
             unorderedList.appendChild(unorderedListHeader);
-            
-            let c = 1;
+        
             pokemonArray.forEach(function(pokedexEntry) {
                 pokemonRepository.loadDetails(pokedexEntry);
 
                 let unorderedListItem = pokemonRepository.addListItem(pokedexEntry);
-
-                // add generation headers to link to in nav
-                let genHeader = document.createElement('h2');
-                if (c === 1) {
-                    genHeader.innerText = 'Generation I';
-                    genHeader.classList.add('pokemon-generation');
-                    genHeader.id = 'generation-1'
-                    unorderedList.appendChild(genHeader);
-                } else if (c === 152) {
-                    genHeader.innerText = 'Generation II';
-                    genHeader.classList.add('pokemon-generation');
-                    genHeader.id = 'generation-2'
-                    unorderedList.appendChild(genHeader);
-                } else if (c === 252) {
-                    genHeader.innerText = 'Generation III';
-                    genHeader.classList.add('pokemon-generation');
-                    genHeader.id = 'generation-3'
-                    unorderedList.appendChild(genHeader);
-                }
                 unorderedList.appendChild(unorderedListItem);
-                c += 1;
             })
         
             document.getElementsByTagName("main")[0].appendChild(unorderedList);
-
-            let navLinks = document.createElement('div');
-            navLinks.classList.add('pokemon-list__links');
-            let genOneLink = document.createElement('a');
-            genOneLink.href = '#generation-1';
-            genOneLink.innerText = 'GEN I';
-
-            let genTwoLink = document.createElement('a');
-            genTwoLink.href = '#generation-2';
-            genTwoLink.innerText = 'GEN II';
-
-            let genThreeLink = document.createElement('a');
-            genThreeLink.href = '#generation-3';
-            genThreeLink.innerText = 'GEN III';
-
-            let headerBottom = document.getElementById('header-bottom');
-            let nav = document.getElementsByTagName('header')[0];
-
-            navLinks.appendChild(genOneLink);
-            navLinks.appendChild(genTwoLink);
-            navLinks.appendChild(genThreeLink);
-
-            nav.insertBefore(navLinks, headerBottom);
-
-            
         },
         loadList: function () {
             return fetch(apiUrl).then(function (response) {
@@ -199,7 +153,7 @@ let pokemonRepository = (function () {
                     pokemonRepository.add(pokemon);
                 });
             }).catch(function (e) {
-                console.error(`loadList ${e}`);
+                console.error(e);
             })
         },
         loadDetails: function (pokedexEntry) {

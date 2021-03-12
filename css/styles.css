@@ -121,7 +121,7 @@ button:hover {
     cursor: pointer;
 }
 
-.pokemon-list__links {
+/* .pokemon-list__links {
     width: 100%;
     display: flex;
     flex-flow: row wrap;
@@ -132,7 +132,7 @@ button:hover {
     display: block;
     padding: 5px;
     text-align: center;
-}
+} */
 
 .pokemon-list {
     list-style-type: none;
@@ -146,7 +146,7 @@ button:hover {
     margin-top: 0;
 }
 
-.pokemon-list h3 {
+.pokemon-list h2 {
     margin: 0;
 }
 
@@ -329,17 +329,17 @@ button:hover {
         padding: 0 10px 0 0;
     }
 
-    header :nth-child(2) {
+    /* header :nth-child(2) {
         order: 3;
         width: 100%;
         flex-flow: row;
-    }
+    } */
 
-    .pokemon-list__links a {
+    /* .pokemon-list__links a {
         display: inline-block;
         padding: 5px;
         text-align: center;
-    }
+    } */
 
     main {
         flex: 1;
