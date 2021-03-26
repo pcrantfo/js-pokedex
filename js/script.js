@@ -16,13 +16,8 @@ let pokemonRepository = (function () {
             let listOfNames = allPokemon.filter(entry => entry.name === pokemonName);
             return listOfNames.length === 0 ? alert(`${pokemonName} not in pokemonList`) : listOfNames;
         },
-    
-/**======================
- *    CUT HERE FOR INFO SECTION PASTE
- *    BE SURE TO TAB OVER TWICE
- *========================**/
 
-        // Function must be called in .loadDetails promise
+        // Function that retrieves and shows a pokemon's details when list item is clicked. Must be called in .loadDetails promise.
         showDetails: function(pokedexEntry) {
             // console.log(pokedexEntry);
 
@@ -80,10 +75,11 @@ let pokemonRepository = (function () {
                 
                 unorderedListButton.addEventListener('click', function (event) {
                     let activeElement = event.currentTarget;
-            
+                    
+                    // toggle Show more + and Show less -
                     activeElement.querySelectorAll('.pokemon-list__toggle').forEach(v => v.classList.toggle('is-not-visible'));
 
-                    info.remove();
+                    // Display/remove details based on clicks
                     if (info.classList.contains('is-visible')) {
                         info.classList.toggle('is-visible');
                         info.remove();
@@ -100,8 +96,8 @@ let pokemonRepository = (function () {
             let buttonDiv = document.createElement('div');
             buttonDiv.classList.add('button-header');
 
-            let buttonDivP = document.createElement('h2');
-            buttonDivP.innerText = pokedexEntry.name;
+            let buttonDivH2 = document.createElement('h2');
+            buttonDivH2.innerText = pokedexEntry.name;
 
             let buttonDivMore = document.createElement('div');
             buttonDivMore.classList.add('pokemon-list__toggle');
@@ -110,7 +106,7 @@ let pokemonRepository = (function () {
             buttonDivLess.classList.add('pokemon-list__toggle', 'is-not-visible');
             buttonDivLess.innerHTML = `<p>Show less -</p>`;
 
-            buttonDiv.appendChild(buttonDivP);
+            buttonDiv.appendChild(buttonDivH2);
             buttonDiv.appendChild(buttonDivMore);
             buttonDiv.appendChild(buttonDivLess);
 
@@ -120,9 +116,7 @@ let pokemonRepository = (function () {
 
             return unorderedListItem;
         },
-    /**======================
-     *    END CUT
-     *========================**/
+        // Uses addListItem to create pokedex ul
         pokemonListBox: function () {
             let pokemonArray = pokemonRepository.getAll();
             let unorderedList = document.createElement('ul');
@@ -176,5 +170,3 @@ pokemonRepository.loadList().then(function() {
     // Now the data is loaded!
     pokemonRepository.pokemonListBox();
   });
-
-// pokemonListBox();
