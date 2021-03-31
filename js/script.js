@@ -77,6 +77,7 @@ let pokemonRepository = (function () {
                     let activeElement = event.currentTarget;
                     
                     // toggle Show more + and Show less -
+                    // @ts-ignore
                     activeElement.querySelectorAll('.pokemon-list__toggle').forEach(v => v.classList.toggle('is-not-visible'));
 
                     // Display/remove details based on clicks
